@@ -14,6 +14,7 @@ import { Control } from 'react-hook-form'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { FormFieldType } from './forms/PatientForm'
+import { Checkbox } from './ui/checkbox'
 import { Input } from './ui/input'
 import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select'
 import { Textarea } from './ui/textarea'
@@ -42,6 +43,8 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     dateFormat,
     children,
     disabled,
+    name,
+    label,
     renderSkeleton,
   } = props
 
@@ -142,6 +145,21 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
           />
         </FormControl>
       )
+    case FormFieldType.CHECKBOX:
+      return (
+        <FormControl>
+          <div className='flex items-center gap-4'>
+            <Checkbox
+              id={name}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+            />
+            <label htmlFor={name} className='checkbox-label'>
+              {label}
+            </label>
+          </div>
+        </FormControl>
+      )
     default:
       break
   }
@@ -154,9 +172,9 @@ const CustomFormField = (props: CustomProps) => {
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className='flex-1'>
           {fieldType !== FormFieldType.CHECKBOX && label && (
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className='shad-input-label'>{label}</FormLabel>
           )}
           <RenderField field={field} props={props} />
           <FormMessage className='shad-error' />
