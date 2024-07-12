@@ -186,6 +186,71 @@ const RegisterForm = ({ user }: { user: User }) => {
               </SelectItem>
             ))}
           </CustomFormField>
+
+          <div className='flex flex-col gap-6 xl:flex-row'>
+            <CustomFormField
+              control={form.control}
+              name='insuranceProvider'
+              label='Insurance provider'
+              fieldType={FormFieldType.INPUT}
+              placeholder='ex: BlueCross'
+            />
+            <CustomFormField
+              control={form.control}
+              name='insurancePolicyNumber'
+              label='Insurance policy number'
+              fieldType={FormFieldType.INPUT}
+              placeholder='ex: ABC1234567'
+            />
+          </div>
+          <div className='flex flex-col gap-6 xl:flex-row'>
+            <CustomFormField
+              control={form.control}
+              name='allergies'
+              label='Allergies (if any)'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Peanuts, Penicillin, Pollen'
+            />
+            <CustomFormField
+              control={form.control}
+              name='currentMedications'
+              label='Current medications'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Ibuprofen 200mg, Levothyroxine 50mcg'
+            />
+          </div>
+          <div className='flex flex-col gap-6 xl:flex-row'>
+            <CustomFormField
+              control={form.control}
+              name='allergies'
+              label='Allergies (if any)'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Peanuts, Penicillin, Pollen'
+            />
+            <CustomFormField
+              control={form.control}
+              name='currentMedications'
+              label='Current medications'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Ibuprofen 200mg, Levothyroxine 50mcg'
+            />
+          </div>
+          <div className='flex flex-col gap-6 xl:flex-row'>
+            <CustomFormField
+              control={form.control}
+              name='familyMedicalHistory'
+              label='Family medical history (if relevant)'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Mother had breast cancer, Father had diabetes'
+            />
+            <CustomFormField
+              control={form.control}
+              name='pastMedicalHistory'
+              label='Past medical history'
+              fieldType={FormFieldType.TEXTAREA}
+              placeholder='ex: Asthma diagnosis in childhood'
+            />
+          </div>
         </section>
 
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>

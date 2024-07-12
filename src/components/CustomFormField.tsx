@@ -16,6 +16,7 @@ import 'react-phone-number-input/style.css'
 import { FormFieldType } from './forms/PatientForm'
 import { Input } from './ui/input'
 import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select'
+import { Textarea } from './ui/textarea'
 
 interface CustomProps extends PropsWithChildren {
   control: Control<any>
@@ -40,6 +41,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     showTimeSelect,
     dateFormat,
     children,
+    disabled,
     renderSkeleton,
   } = props
 
@@ -126,6 +128,18 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
               {children}
             </SelectContent>
           </Select>
+        </FormControl>
+      )
+
+    case FormFieldType.TEXTAREA:
+      return (
+        <FormControl>
+          <Textarea
+            {...field}
+            placeholder={placeholder}
+            className='shad-textArea'
+            disabled={disabled}
+          />
         </FormControl>
       )
     default:
